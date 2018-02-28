@@ -12,6 +12,7 @@ from rasa_core import utils
 from rasa_core.actions import Action
 from rasa_core.agent import Agent
 from rasa_core.channels.console import ConsoleInputChannel
+from rasa_core.channels.console import ConsoleOutputChannel
 from rasa_core.events import SlotSet
 from rasa_core.interpreter import RasaNLUInterpreter
 from rasa_core.policies.memoization import MemoizationPolicy
@@ -53,19 +54,29 @@ if __name__ == '__main__':
     )
 
     parser.add_argument(
-        'task',
+        '-t',
+        required=True,
         choices=['train', 'run', 'build_train'],
         help='What the bot should do =- e.g. train, run, or build domain and train ("build_train")?'
     )
 
-    task = parser.parse_args().task
+    parser.add_argument(
+        '-n',
+        help='The location of the nlu model directory'
+    )
 
+    task = parser.parse_args().t
+    
     if task == 'train':
         trainDialogue()
     elif task == 'run':
-        run()
+        nlu_model_dir = parser.parse_args().n
+        if nlu_model_dir == None:
+            warnings.warn('When passing "-t run," you must also pass the -n parameter for the location of the nlu model directory.')
+        else:
+            run(nlu_model_dir)
     elif task == 'build_train':
         domain.buildDomain.build_domain()
         trainDialogue()
     else:
-        warnings.warn('Need to either pass "train" or "run" to use this script')
+        warnings.warn('Invalid -t argument.  You must use either train, run, or build_train.')
