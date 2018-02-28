@@ -6,6 +6,7 @@ from __future__ import unicode_literals
 import argparse
 import logging
 import warnings
+import domain.buildDomain
 
 from rasa_core import utils
 from rasa_core.actions import Action
@@ -23,20 +24,20 @@ agentModelPath='models/dialogue'
 def trainDialogue(domainFile='domain/domain.yml',
                   modelPath=agentModelPath,
                   trainingDataFile='data/stories.md'):
-    agent = Agent(DomainFile,
+    agent = Agent(domainFile,
                   policies=[MemoizationPolicy(), KerasPolicy()])
     
-    agent.train(TrainingDataFile,
+    agent.train(trainingDataFile,
                 max_history=3,
                 epochs=400,
                 batch_size=100,
                 validation_split=0.2)
 
-    agent.persist(ModelPath)
+    agent.persist(modelPath)
     return agent
 
-def run(serve_forever=True,
-        nluModelDirectory):
+def run(nluModelDirectory,
+        serve_forever=True):
     interpreter = RasaNLUInterpreter(nluModelDirectory)
     agent = Agent.load(agentModelPath, interpreter=interpreter)
 
@@ -53,8 +54,8 @@ if __name__ == '__main__':
 
     parser.add_argument(
         'task',
-        choices=['train', 'run'],
-        help='What the bot should do =- e.g. train or run?'
+        choices=['train', 'run', 'build_train'],
+        help='What the bot should do =- e.g. train, run, or build domain and train ("build_train")?'
     )
 
     task = parser.parse_args().task
@@ -63,5 +64,8 @@ if __name__ == '__main__':
         trainDialogue()
     elif task == 'run':
         run()
+    elif task == 'build_train':
+        domain.buildDomain.build_domain()
+        trainDialogue()
     else:
         warnings.warn('Need to either pass "train" or "run" to use this script')

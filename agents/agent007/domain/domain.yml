@@ -4,12 +4,6 @@ intents:
   - hello
   - goodbye
 
-entities:
-
-
-slots:
-
-
 templates:
   utter_goodbye:
     - "Bye"

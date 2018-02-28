@@ -53,8 +53,8 @@ def build_domain():
 
     with open(domainDir + "domain.yml", "w") as outfile:
         intents(outfile)
-        entities(outfile)
-        slots(outfile)
+        #entities(outfile) - comment out until entities are added to entities.yml
+        #slots(outfile) - comment out until slots are added to slots.yml
         templates(outfile)
         actions(outfile)
         
