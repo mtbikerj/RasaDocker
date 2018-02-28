@@ -1,0 +1,16 @@
+- hey
+- howdy
+- hey there
+- hello
+- hi
+- good morning
+- good evening
+- dear sir
+- what's up?
+- good day
+- hi there
+- Hi there bot!
+- Hey, how are you?
+- how you doing
+- good afternoon
+- hello there

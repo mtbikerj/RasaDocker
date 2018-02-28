@@ -1,0 +1,12 @@
+- bye
+- good bye
+- stop
+- end
+- farewell
+- Bye bye
+- have a good one
+- see you later
+- see ya
+- c ya
+- cheers
+- buh bye
