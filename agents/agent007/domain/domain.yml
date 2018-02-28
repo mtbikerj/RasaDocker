@@ -1,0 +1,20 @@
+intents:
+  - hello
+  - goodbye
+
+templates:
+  utter_hello:
+    - "Hi, how can I help you?"
+    - "Hello there.  What can I do for you today?"
+    - "Hi, what can I help you with today?"
+    - "Hello, how can I assist you?"
+  utter_goodbye:
+    - "Bye"
+    - "Goodbye"
+    - "Bye, come again soon!"
+    - "Thanks for visiting.  See you later"
+    - "See ya"
+
+actions:
+  - utter_hello
+  - utter_goodbye
