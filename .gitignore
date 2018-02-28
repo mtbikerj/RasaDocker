@@ -102,3 +102,6 @@ ENV/
 
 # VS Code
 .vscode/
+
+# Rasa local files
+nlu/models/
