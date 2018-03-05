@@ -1,0 +1,11 @@
+- hello
+- hi
+- hey there
+- what's up?
+- hi there
+- howdy
+- greetings
+- good morning
+- good afternoon
+- good evening
+- hi, how are you?
