@@ -5,7 +5,6 @@ from rasa_core.channels.console import ConsoleInputChannel
 from rasa_core.agent import Agent
 
 import argparse
-import os
 
 domainFile = "domain/domain.yml"
 trainingStories = "stories.md"
@@ -41,8 +40,7 @@ if __name__ == "__main__":
     if task == "train":
         train()
     elif task == "run_console":
-        print(os.path.abspath(os.path.join(os.getcwd(), os.pardir)))
         run()
     else:
-        warnings.warn("Need to pass 'train' as argument")
+        warnings.warn("Need to pass 'train' or 'run_console' as argument")
         exit(1)
