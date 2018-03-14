@@ -1,0 +1,5 @@
+FROM rasa/rasa_nlu:latest-bare
+RUN pip install rasa_nlu[spacy]
+RUN pip install -U spacy
+RUN python -m spacy download en_core_web_md
+RUN python -m spacy link en_core_web_md en
