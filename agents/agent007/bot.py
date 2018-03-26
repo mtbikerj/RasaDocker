@@ -3,6 +3,8 @@ from rasa_core.policies.memoization import MemoizationPolicy
 from rasa_core.interpreter import RasaNLUInterpreter
 from rasa_core.channels.console import ConsoleInputChannel
 from rasa_core.agent import Agent
+from rasa_core.channels.rest import HttpInputChannel
+from CustomWebChannel import CustomWebChannel
 
 import argparse
 
@@ -24,15 +26,20 @@ def train():
     )
     agent.persist(modelPath)
 
-def run():
+def run(channel = 'console'):
     interpreter = RasaNLUInterpreter(model_directory = nluModelDir)
     agent = Agent.load(modelPath, interpreter = interpreter)
-    agent.handle_channel(ConsoleInputChannel())
+    if (channel == 'console'):
+        agent.handle_channel(ConsoleInputChannel())
+    else:
+        input_channel = CustomWebChannel()
+        http_channel = HttpInputChannel(4000, '/', input_channel)
+        agent.handle_channel(http_channel)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="starts the bot")
     parser.add_argument("-t",
-                        choices=["train", "run_console"],
+                        choices=["train", "run_console", "run_http"],
                         help="what the bot should do")
 
     task = parser.parse_args().t
@@ -41,6 +48,8 @@ if __name__ == "__main__":
         train()
     elif task == "run_console":
         run()
+    elif task == "run_http":
+        run('http')
     else:
         warnings.warn("Need to pass 'train' or 'run_console' as argument")
         exit(1)
