@@ -1,6 +1,7 @@
 from rasa_core.policies.keras_policy import KerasPolicy
 from rasa_core.policies.memoization import MemoizationPolicy
 from rasa_core.interpreter import RasaNLUInterpreter
+from rasa_core.interpreter import RasaNLUHttpInterpreter
 from rasa_core.channels.console import ConsoleInputChannel
 from rasa_core.agent import Agent
 from rasa_core.channels.rest import HttpInputChannel
@@ -27,7 +28,13 @@ def train():
     agent.persist(modelPath)
 
 def run(channel = 'console'):
-    interpreter = RasaNLUInterpreter(model_directory = nluModelDir)
+    nlu = "http://localhost:5000"
+    interpreter = None
+    if (channel == 'console'):
+        interpreter = RasaNLUInterpreter(model_directory = nluModelDir)
+    else:
+        interpreter = RasaNLUHttpInterpreter(model_name = "default", token = "", server = nlu)
+
     agent = Agent.load(modelPath, interpreter = interpreter)
     if (channel == 'console'):
         agent.handle_channel(ConsoleInputChannel())

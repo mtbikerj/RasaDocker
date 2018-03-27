@@ -1,0 +1,7 @@
+FROM rasa_core
+ARG AGENT
+COPY agents/$AGENT /app
+WORKDIR /app
+RUN python domain/build.py
+RUN python bot.py -t train
+CMD ["python", "./bot.py", "-t", "run_http"]
