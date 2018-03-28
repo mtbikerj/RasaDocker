@@ -28,7 +28,7 @@ def train():
     agent.persist(modelPath)
 
 def run(channel = 'console'):
-    nlu = "http://localhost:5000"
+    nlu = "http://nlu:5000"
     interpreter = None
     if (channel == 'console'):
         interpreter = RasaNLUInterpreter(model_directory = nluModelDir)

@@ -14,12 +14,18 @@ for agent in $AGENTS; do
 	NAME=$agent
 	docker rename $NAME $NAME-old
 	echo "Build docker container for $agent agent ..."
-	docker build -t $agent:$BRANCH --build-arg AGENT=$agent -f docker/Dockerfile.agent
+	docker build -t $agent:$BRANCH --build-arg AGENT=$agent -f docker/Dockerfile.agent .
 	echo "Create $NAME container..."
 	docker stop $NAME-old
 	docker container rm $NAME-old
 	echo "Start new container"
-	docker run -d -p 4000:4000 --name $NAME $NAME
+	docker run -d --name $NAME $NAME
+	echo "Add new container to network botnet..."
+    NET=$(docker network inspect botnet)
+    if [ "$NET" == "[]" ] ; then
+        docker network create botnet
+    fi
+    docker network connect botnet $NAME
 done
 echo "Clean up docker"
 docker container prune --force
