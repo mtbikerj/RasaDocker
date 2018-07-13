@@ -2,4 +2,4 @@ FROM chatbot/spacy:latest
 WORKDIR /app
 COPY nlu ./
 RUN python build.py
-RUN python -m rasa_nlu.train -c config.json
+RUN python -m rasa_nlu.train -c config.json -d data/train.md
