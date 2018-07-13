@@ -17,4 +17,4 @@ docker rm $NAME-old
 echo "Docker cleanup..."
 docker container prune --force
 docker volume prune --force
-docker image prune -force
+docker image prune --force
