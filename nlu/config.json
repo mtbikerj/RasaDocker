@@ -1,6 +1,0 @@
-{
-    "pipeline": "spacy_sklearn",
-    "path": "./models",
-    "fixed_model_name": "default",
-    "data": "data/train.md"
-}
