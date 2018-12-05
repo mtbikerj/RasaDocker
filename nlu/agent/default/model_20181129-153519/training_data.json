@@ -1,0 +1,293 @@
+{
+  "rasa_nlu_data": {
+    "lookup_tables": [],
+    "regex_features": [],
+    "entity_synonyms": [],
+    "common_examples": [
+      {
+        "text": "stop the mission",
+        "intent": "cancel_mission"
+      },
+      {
+        "text": "cancel the mission",
+        "intent": "cancel_mission"
+      },
+      {
+        "text": "cancel your mission",
+        "intent": "cancel_mission"
+      },
+      {
+        "text": "cease and desist",
+        "intent": "cancel_mission"
+      },
+      {
+        "text": "what are you doing?",
+        "intent": "current_mission"
+      },
+      {
+        "text": "what is your mission",
+        "intent": "current_mission"
+      },
+      {
+        "text": "what is your current mission",
+        "intent": "current_mission"
+      },
+      {
+        "text": "tell me about Prague",
+        "intent": "describe",
+        "entities": [
+          {
+            "end": 20,
+            "start": 14,
+            "value": "Prague",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "I want to learn more about Paris",
+        "intent": "describe",
+        "entities": [
+          {
+            "end": 32,
+            "start": 27,
+            "value": "Paris",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "What is New York City like?",
+        "intent": "describe",
+        "entities": [
+          {
+            "end": 21,
+            "start": 8,
+            "value": "New York City",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "who is Moneypenny",
+        "intent": "describe",
+        "entities": [
+          {
+            "end": 17,
+            "start": 7,
+            "value": "Moneypenny",
+            "entity": "person"
+          }
+        ]
+      },
+      {
+        "text": "do you know Q",
+        "intent": "describe",
+        "entities": [
+          {
+            "end": 13,
+            "start": 12,
+            "value": "Q",
+            "entity": "person"
+          }
+        ]
+      },
+      {
+        "text": "you are stupid",
+        "intent": "frustrated"
+      },
+      {
+        "text": "I can't stand you",
+        "intent": "frustrated"
+      },
+      {
+        "text": "shut up",
+        "intent": "frustrated"
+      },
+      {
+        "text": "bye",
+        "intent": "goodbye"
+      },
+      {
+        "text": "goodbye",
+        "intent": "goodbye"
+      },
+      {
+        "text": "c ya",
+        "intent": "goodbye"
+      },
+      {
+        "text": "see you later",
+        "intent": "goodbye"
+      },
+      {
+        "text": "see ya",
+        "intent": "goodbye"
+      },
+      {
+        "text": "bye bye",
+        "intent": "goodbye"
+      },
+      {
+        "text": "cheers",
+        "intent": "goodbye"
+      },
+      {
+        "text": "hello",
+        "intent": "hello"
+      },
+      {
+        "text": "hi",
+        "intent": "hello"
+      },
+      {
+        "text": "hey there",
+        "intent": "hello"
+      },
+      {
+        "text": "what's up?",
+        "intent": "hello"
+      },
+      {
+        "text": "hi there",
+        "intent": "hello"
+      },
+      {
+        "text": "howdy",
+        "intent": "hello"
+      },
+      {
+        "text": "greetings",
+        "intent": "hello"
+      },
+      {
+        "text": "good morning",
+        "intent": "hello"
+      },
+      {
+        "text": "good afternoon",
+        "intent": "hello"
+      },
+      {
+        "text": "good evening",
+        "intent": "hello"
+      },
+      {
+        "text": "hi, how are you?",
+        "intent": "hello"
+      },
+      {
+        "text": "what is your name",
+        "intent": "say_your_name"
+      },
+      {
+        "text": "who are you",
+        "intent": "say_your_name"
+      },
+      {
+        "text": "what should I call you",
+        "intent": "say_your_name"
+      },
+      {
+        "text": "give me your name",
+        "intent": "say_your_name"
+      },
+      {
+        "text": "start a new mission",
+        "intent": "start_mission"
+      },
+      {
+        "text": "begin a mission",
+        "intent": "start_mission"
+      },
+      {
+        "text": "I have a new mission for you",
+        "intent": "start_mission"
+      },
+      {
+        "text": "Go to Dallas and fly a helicopter",
+        "intent": "start_mission",
+        "entities": [
+          {
+            "end": 12,
+            "start": 6,
+            "value": "Dallas",
+            "entity": "mission_destination"
+          },
+          {
+            "end": 33,
+            "start": 17,
+            "value": "fly a helicopter",
+            "entity": "mission_objective"
+          }
+        ]
+      },
+      {
+        "text": "I want you to Eliminate Target X in Honduras",
+        "intent": "start_mission",
+        "entities": [
+          {
+            "end": 32,
+            "start": 14,
+            "value": "Eliminate Target X",
+            "entity": "mission_objective"
+          },
+          {
+            "end": 44,
+            "start": 36,
+            "value": "Honduras",
+            "entity": "mission_destination"
+          }
+        ]
+      },
+      {
+        "text": "my name is Jason",
+        "intent": "store_name",
+        "entities": [
+          {
+            "end": 16,
+            "start": 11,
+            "value": "Jason",
+            "entity": "user_name"
+          }
+        ]
+      },
+      {
+        "text": "call me Fred",
+        "intent": "store_name",
+        "entities": [
+          {
+            "end": 12,
+            "start": 8,
+            "value": "Fred",
+            "entity": "user_name"
+          }
+        ]
+      },
+      {
+        "text": "you can call me Ralph",
+        "intent": "store_name",
+        "entities": [
+          {
+            "end": 21,
+            "start": 16,
+            "value": "Ralph",
+            "entity": "user_name"
+          }
+        ]
+      },
+      {
+        "text": "I'm Jane",
+        "intent": "store_name",
+        "entities": [
+          {
+            "end": 8,
+            "start": 4,
+            "value": "Jane",
+            "entity": "user_name"
+          }
+        ]
+      }
+    ]
+  }
+}
