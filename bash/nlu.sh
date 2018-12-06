@@ -5,7 +5,7 @@ docker rename $NAME $NAME-old
 echo "Building nlu:latest docker image"
 docker build -t nlu:latest -f docker/Dockerfile.nlu .
 echo "Starting nlu docker container"
-docker run -d -p 5000:5000 -v /nlu/logs:/app/logs --name nlu nlu:latest start
+docker run -d -p 5000:5000 -v /nlu/logs:/app/logs --name nlu nlu:latest start --path agent_nlu/agent/default
 echo "Waiting 2 seconds to give docker IP time to spin up"
 sleep 2
 echo "Running curl against NLU to load model into memory"

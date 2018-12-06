@@ -46,6 +46,8 @@ templates:
     - "Well, we have had our kicks"
     - "Perhaps you would like a drink.  Shaken.... not stirred."
     - "This never happened to the other fellow"
+  action_default_fallback:
+    - "My apologies, but I don't understand you."
 
 actions:
   - utter_hello
@@ -53,3 +55,4 @@ actions:
   - utter_my_name_is
   - utter_mission_cancelled
   - utter_ease_tension
+  - action_default_fallback
