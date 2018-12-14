@@ -1,3 +1,4 @@
+## intent:goodbye
 - bye
 - goodbye
 - c ya
