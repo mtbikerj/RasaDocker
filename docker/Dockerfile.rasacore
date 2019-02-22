@@ -1,3 +1,0 @@
-FROM python:3
-COPY docker/requirements_rasa_core.txt ./requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt

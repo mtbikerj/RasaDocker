@@ -12,7 +12,7 @@ urls = {}
 def main():
     # List our bots... in a production system this wouldn't be static, but passed via file
     bots = ["agent007"]
-    baseUrl = "http://||agent||:4000/post_message"
+    baseUrl = "http://||agent||:5005/webhooks/rest/webhook"
     # If a file had been passed like in a production system, it might look like this:
     #with open("agents.txt", "r") as AgentFile:
     #    for line in AgentFile.read().splitlines():
