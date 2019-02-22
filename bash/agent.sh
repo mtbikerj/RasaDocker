@@ -1,25 +1,15 @@
 #!/bin/bash
-BRANCH='master'
-CORE=$(docker images rasa_core:latest -q)
-
-if [ "$CORE" == "" ] ; then
-	echo "rasa_core container not found.  Building..."
-	docker build -t rasa_core:latest -f docker/Dockerfile.rasacore
-fi
-
 AGENTS=$(ls agents)
 
 for agent in $AGENTS; do
 	echo "Building bot: $agent..."
 	NAME=$agent
 	docker rename $NAME $NAME-old
-	echo "Build docker container for $agent agent ..."
-	docker build -t $agent:$BRANCH --build-arg AGENT=$agent -f docker/Dockerfile.agent
 	echo "Create $NAME container..."
 	docker stop $NAME-old
 	docker container rm $NAME-old
 	echo "Start new container"
-	docker run -d -p 4000:4000 --name $NAME $NAME
+	docker run -d -p 5005:5005 -v $(pwd)/agents/$agent/models:/app/models -v $(pwd)/agents/$agent/config:/app/config --name $NAME rasa/rasa_core:latest start --core models/agent -c rest --endpoints config/endpoints.yml -u agent/default
 done
 echo "Clean up docker"
 docker container prune --force
